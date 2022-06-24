@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="SD_var__1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9fp-dw-IxO">
+                                <rect key="frame" x="132" y="61" width="150" height="147.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ayL-pA-0sU"/>
+                                    <constraint firstAttribute="width" constant="150" id="whn-sL-E80"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.01.1998" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31W-3K-YR3">
+                                <rect key="frame" x="165" y="316" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г. Москва" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEN-yL-eye">
+                                <rect key="frame" x="169.5" y="369" width="75.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Николай Владимирович" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mx-bN-8rS">
+                                <rect key="frame" x="96" y="260" width="222.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uS-TQ-fre">
+                                <rect key="frame" x="16" y="459" width="382" height="203"/>
+                                <string key="text">Swift – это новый язык программирования для разработки iOS и OS X приложений, который сочетает в себе все лучшее от C и Objective-C, но лишен ограничений, накладываемых в угоду совместимости с C. В Swift используются паттерны безопасного программирования и добавлены современные функции, превращающие создание приложения в простой, более гибкий и увлекательный процесс.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Расскажите о себе:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGd-2k-YOJ">
+                                <rect key="frame" x="128.5" y="422" width="157" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-WN-WMw">
+                                <rect key="frame" x="16" y="60" width="75" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="j7k-Tp-rk3"/>
+                                    <constraint firstAttribute="width" constant="75" id="qQD-R8-gdp"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Exit"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IS5-Ha-qZf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.68203099132253087" green="0.9738143507421726" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="31W-3K-YR3" firstAttribute="top" secondItem="9mx-bN-8rS" secondAttribute="bottom" constant="32" id="1cu-4h-h0D"/>
+                            <constraint firstItem="9fp-dw-IxO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Mt-aG-WYn"/>
+                            <constraint firstItem="9fp-dw-IxO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="8t5-S4-XBo"/>
+                            <constraint firstItem="vIA-WN-WMw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ARV-Ky-jPE"/>
+                            <constraint firstAttribute="trailing" secondItem="3uS-TQ-fre" secondAttribute="trailing" constant="16" id="GgV-FZ-kDN"/>
+                            <constraint firstItem="FEN-yL-eye" firstAttribute="top" secondItem="31W-3K-YR3" secondAttribute="bottom" constant="32" id="MpY-Sa-oeh"/>
+                            <constraint firstItem="9mx-bN-8rS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N18-dN-VpP"/>
+                            <constraint firstItem="KGd-2k-YOJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Se7-xE-L3K"/>
+                            <constraint firstItem="FEN-yL-eye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xgr-tl-eNW"/>
+                            <constraint firstItem="vIA-WN-WMw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="duD-V8-bLF"/>
+                            <constraint firstItem="3uS-TQ-fre" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="egb-Ct-Yk1"/>
+                            <constraint firstItem="3uS-TQ-fre" firstAttribute="top" secondItem="KGd-2k-YOJ" secondAttribute="bottom" constant="16" id="gVv-bb-y5K"/>
+                            <constraint firstItem="KGd-2k-YOJ" firstAttribute="top" secondItem="FEN-yL-eye" secondAttribute="bottom" constant="32" id="ipf-AG-l1a"/>
+                            <constraint firstItem="31W-3K-YR3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rcV-z6-Zli"/>
+                            <constraint firstItem="9mx-bN-8rS" firstAttribute="top" secondItem="9fp-dw-IxO" secondAttribute="bottom" constant="50" id="vQd-u8-qIS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutMeView" destination="3uS-TQ-fre" id="1v3-Bh-5QF"/>
+                        <outlet property="cityView" destination="FEN-yL-eye" id="avE-Ru-m0J"/>
+                        <outlet property="dateOfBirthView" destination="31W-3K-YR3" id="BfM-7F-zpP"/>
+                        <outlet property="imageView" destination="9fp-dw-IxO" id="9Qg-Cm-S1p"/>
+                        <outlet property="nameView" destination="9mx-bN-8rS" id="xin-g4-hJK"/>
+                        <outlet property="textLabel" destination="KGd-2k-YOJ" id="eNh-QM-wUf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="65.625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+    </resources>
+</document>
