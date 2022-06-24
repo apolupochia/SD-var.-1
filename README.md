@@ -1,6 +1,6 @@
-the program for diabetes mellitus
-SwiftUI
-UIKit
-CoreData
+the program for diabetes mellitus\
+SwiftUI\
+UIKit\
+CoreData\
 Animations
 
