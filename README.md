@@ -1,4 +1,6 @@
-# SD-var.-1
-# SD-var.-1
-# SD-var.-1
-# SD-var.-1
+the program for diabetes mellitus
+SwiftUI
+UIKit
+CoreData
+Animations
+
