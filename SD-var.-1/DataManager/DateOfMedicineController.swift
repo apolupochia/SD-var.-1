@@ -46,7 +46,9 @@ struct SugAndTime : DataManagerProtocolForSugAndTime{
         var sugInTime = SugarAndInsulinData(days: [])
         
         var day = -1
-        var sugNow = SugarAndInsulin(date:Date() ,day: "", sugar: [], insulin: [],timeMinute: [],timeHour: [])
+        var sugNow = SugarAndInsulin(date: Date(), day: "", SugarAndInsulinUserInfo: [])
+        var sugNowInfo : [SugarAndInsulinInfo] = []
+        var sugNowInfoNow = SugarAndInsulinInfo(sugar: "", insulin: "", timeMinute: 0, timeHour: 0)
         for item in items{
             
             
@@ -62,35 +64,49 @@ struct SugAndTime : DataManagerProtocolForSugAndTime{
                 
                 sugNow.date = item.date!
                 sugNow.day = dayWeek(day: dayNow)
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.sugar.append(item.sugar ?? "")
-                sugNow.insulin.append(item.insulin ?? "")
+                
+                sugNowInfoNow.timeMinute = minutes
+                sugNowInfoNow.timeHour = hour
+                sugNowInfoNow.sugar = item.sugar ?? ""
+                sugNowInfoNow.insulin = item.insulin ?? ""
+                
+                sugNowInfo.append(sugNowInfoNow)
+                sugNowInfoNow = SugarAndInsulinInfo(sugar: "", insulin: "", timeMinute: 0, timeHour: 0)
+                
 
             }
             else if day == dayNow{
-                sugNow.sugar.append(item.sugar ?? "")
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.insulin.append(item.insulin ?? "")
+                sugNowInfoNow.timeMinute = minutes
+                sugNowInfoNow.timeHour = hour
+                sugNowInfoNow.sugar = item.sugar ?? ""
+                sugNowInfoNow.insulin = item.insulin ?? ""
+                
+                sugNowInfo.append(sugNowInfoNow)
+                sugNowInfoNow = SugarAndInsulinInfo(sugar: "", insulin: "", timeMinute: 0, timeHour: 0)
                 
 
             }
             else if day != dayNow{
+                sugNow.SugarAndInsulinUserInfo = sugNowInfo
                 sugInTime.days.append(sugNow)
-                sugInTime.count += 1
-                sugNow = SugarAndInsulin(date:Date() ,day: "", sugar: [], insulin: [],timeMinute: [],timeHour: [])
+                
+                sugNowInfo = []
+                sugNowInfoNow = SugarAndInsulinInfo(sugar: "", insulin: "", timeMinute: 0, timeHour: 0)
                 sugNow.date = item.date!
                 sugNow.day = dayWeek(day: dayNow)
-                sugNow.sugar.append(item.sugar ?? "")
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.insulin.append(item.insulin ?? "")
+                sugNowInfoNow.timeMinute = minutes
+                sugNowInfoNow.timeHour = hour
+                sugNowInfoNow.sugar = item.sugar ?? ""
+                sugNowInfoNow.insulin = item.insulin ?? ""
+                
+                sugNowInfo.append(sugNowInfoNow)
+                sugNowInfoNow = SugarAndInsulinInfo(sugar: "", insulin: "", timeMinute: 0, timeHour: 0)
                 
             }
             day = dayNow
             
         }
+        sugNow.SugarAndInsulinUserInfo = sugNowInfo
         sugInTime.days.append(sugNow)
         
         return sugInTime
@@ -119,19 +135,27 @@ struct SugAndTime : DataManagerProtocolForSugAndTime{
 }
 
 
-struct SugarAndInsulinData {
+struct SugarAndInsulinData : Identifiable {
+    let id = UUID()
     var days : [SugarAndInsulin]
-    var count = 0
 }
 
-struct SugarAndInsulin{
+struct SugarAndInsulin : Identifiable, Hashable{ 
+    let id = UUID()
     var date: Date
     var day : String
-    var sugar: [String]
-    var insulin: [String]
-    var timeMinute : [Int]
-    var timeHour : [Int]
+    var SugarAndInsulinUserInfo : [SugarAndInsulinInfo]
 }
+
+struct SugarAndInsulinInfo : Identifiable, Hashable{
+    var id = UUID()
+    
+    var sugar: String
+    var insulin: String
+    var timeMinute : Int
+    var timeHour : Int
+}
+
 
 func dayWeek(day: Int) -> String{
     switch day{

@@ -23,7 +23,7 @@ struct HCard: View {
             Divider()
             section.image
                 .frame(width: 60, height: 60)
-                
+        
         }
         .padding(30)
         .frame(maxWidth: .infinity, maxHeight: 110)

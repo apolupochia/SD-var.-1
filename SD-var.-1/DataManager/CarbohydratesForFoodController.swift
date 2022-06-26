@@ -10,7 +10,8 @@ import SwiftUI
 
 protocol DataManagerProtocolForEatAndTime{
     func saveTask( amountOfCarbohydrates: String, thenEating: String)
-    func addAllElement() -> ArbohydratesAndTimeData
+    func fetchAllElements() -> ArbohydratesAndTimeData
+    func deleteItems(offsets: IndexSet)
 }
 
 struct EatAndTime : DataManagerProtocolForEatAndTime{
@@ -37,14 +38,16 @@ struct EatAndTime : DataManagerProtocolForEatAndTime{
     }
     
     
-    func addAllElement() -> ArbohydratesAndTimeData{
+    func fetchAllElements() -> ArbohydratesAndTimeData{
 
         let items = getItems()
         
         
         var sugInTime = ArbohydratesAndTimeData(days: [])
         var day = -1
-        var sugNow = ArbohydratesAndTime(date: Date(), day: "", timeMinute: [], timeHour: [], thenEating: [], amountOfCarbohydrates: [])
+        var sugNow = ArbohydratesAndTime(date: Date(), day: "", informationAboutDay: [])
+        var infoAboutDayNow = ArbohydratesAndTimePref(timeMinute: 0, timeHour: 0, thenEating: "", amountOfCarbohydrates: "")
+        var infoAboutDayNowMass: [ArbohydratesAndTimePref] = []
         for item in items{
             
             
@@ -60,38 +63,69 @@ struct EatAndTime : DataManagerProtocolForEatAndTime{
                 
                 sugNow.date = item.date!
                 sugNow.day = dayWeek(day: dayNow)
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.thenEating.append(item.thenEating!)
-                sugNow.amountOfCarbohydrates.append(item.amountOfCarbohydrates!)
+                infoAboutDayNow.timeMinute = minutes
+                infoAboutDayNow.timeHour = hour
+                infoAboutDayNow.thenEating = item.thenEating!
+                infoAboutDayNow.amountOfCarbohydrates = item.amountOfCarbohydrates!
+                
+                infoAboutDayNowMass.append(infoAboutDayNow)
+                infoAboutDayNow = ArbohydratesAndTimePref(timeMinute: 0, timeHour: 0, thenEating: "", amountOfCarbohydrates: "")
 
             }
             else if day == dayNow{
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.thenEating.append(item.thenEating!)
-                sugNow.amountOfCarbohydrates.append(item.amountOfCarbohydrates!)
+                infoAboutDayNow.timeMinute = minutes
+                infoAboutDayNow.timeHour = hour
+                infoAboutDayNow.thenEating = item.thenEating!
+                infoAboutDayNow.amountOfCarbohydrates = item.amountOfCarbohydrates!
+                
+                infoAboutDayNowMass.append(infoAboutDayNow)
+                infoAboutDayNow = ArbohydratesAndTimePref(timeMinute: 0, timeHour: 0, thenEating: "", amountOfCarbohydrates: "")
                 
 
             }
             else if day != dayNow{
+                sugNow.informationAboutDay = infoAboutDayNowMass
                 sugInTime.days.append(sugNow)
-                //sugInTime.id = UUID()
-                sugNow = ArbohydratesAndTime(date: Date(), day: "", timeMinute: [], timeHour: [], thenEating: [], amountOfCarbohydrates: [])
+                
+                sugNow = ArbohydratesAndTime(date: Date(), day: "", informationAboutDay: [])
+                infoAboutDayNow = ArbohydratesAndTimePref(timeMinute: 0, timeHour: 0, thenEating: "", amountOfCarbohydrates: "")
+                infoAboutDayNowMass = []
+                
                 sugNow.date = item.date!
                 sugNow.day = dayWeek(day: dayNow)
-                sugNow.timeMinute.append(minutes)
-                sugNow.timeHour.append(hour)
-                sugNow.thenEating.append(item.thenEating!)
-                sugNow.amountOfCarbohydrates.append(item.amountOfCarbohydrates!)
+                
+                infoAboutDayNow.timeMinute = minutes
+                infoAboutDayNow.timeHour = hour
+                infoAboutDayNow.thenEating = item.thenEating!
+                infoAboutDayNow.amountOfCarbohydrates = item.amountOfCarbohydrates!
+                
+                infoAboutDayNowMass.append(infoAboutDayNow)
+                infoAboutDayNow = ArbohydratesAndTimePref(timeMinute: 0, timeHour: 0, thenEating: "", amountOfCarbohydrates: "")
+                
                 
             }
             day = dayNow
             
         }
+        sugNow.informationAboutDay = infoAboutDayNowMass
         sugInTime.days.append(sugNow)
         
         return sugInTime
+    }
+    
+    func deleteItems(offsets: IndexSet) {
+        let itemsOld = getItems()
+        withAnimation {
+            offsets.map { itemsOld[$0] }.forEach(viewContext.delete)
+            do {
+                try viewContext.save()
+            } catch {
+
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        
+        }
     }
     
     
@@ -122,15 +156,23 @@ struct ArbohydratesAndTimeData : Identifiable {
 }
 
 struct ArbohydratesAndTime: Identifiable, Hashable{
+ 
     let id = UUID()
     var date: Date
     var day : String
-    var timeMinute : [Int]
-    var timeHour : [Int]
-    var thenEating : [String]
-    var amountOfCarbohydrates : [String]
+    var informationAboutDay : [ArbohydratesAndTimePref]
+
     
 }
+
+struct ArbohydratesAndTimePref : Identifiable, Hashable{
+    let id = UUID()
+    var timeMinute : Int
+    var timeHour : Int
+    var thenEating : String
+    var amountOfCarbohydrates : String
+}
+
 
 
 

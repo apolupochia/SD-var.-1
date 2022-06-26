@@ -27,41 +27,10 @@ struct View_SugInfCard: View {
     var body: some View {
       
         ZStack{
-            VStack{
-                Button {
-                    showAnyView = false
-                    showModal = true
-                } label: {
-                    Label("add", systemImage: "plus")
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-
-                if !showModal{
-                ScrollView(.vertical, showsIndicators: false) {
-                   // var Sug = SugAndTime(items: items)
-                    let days = SugAndTime.shared.addAllElement()
-            
-                    ForEach(0..<days.count + 1) { i in
-                        Text("\(days.days[i].day)")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                        Text("\(days.days[i].date, formatter : formatter)")
-                            
-                        ForEach(0..<days.days[i].insulin.count){ unt in
-                            SugInfCard(timeHour: days.days[i].timeHour[unt], timeMinute: days.days[i].timeMinute[unt], howSugur: days.days[i].sugar[unt],
-                            howInsulin: days.days[i].insulin[unt])
-                        }
-                        
-
-                    }
-                }
-                .offset(y:-20)
-                .padding()
-                
-                }
+            if !showModal{
+            mainContent
+                .background(Color(hex: "#FFFFE0"))
             }
-            .background(Color(hex: "#FFFFE0"))
             
             if showModal{
                 AddNewDimensionsView(showAnyView: $showAnyView, newSug: $newSug, showModal: $showModal)
@@ -73,6 +42,53 @@ struct View_SugInfCard: View {
         }
 
     }
+    
+    private var mainContent : some View{
+        VStack{
+            Button {
+                showAnyView = false
+                showModal = true
+            } label: {
+                Label("add", systemImage: "plus")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 24)
+
+            if !showModal{
+            ScrollView(.vertical, showsIndicators: false) {
+               // var Sug = SugAndTime(items: items)
+                let days = SugAndTime.shared.addAllElement()
+        
+                ForEach(Array(days.days), id: \.self) { day in
+                 //   Text("123")
+                    
+                    Text("\(day.day)")
+                            .font(.largeTitle)
+                            .foregroundColor(.red)
+                    Text("\(day.date, formatter : formatter)")
+                        
+                    ForEach(day.SugarAndInsulinUserInfo){ dayInf in
+                        SugInfCard(timeHour: dayInf.timeHour,
+                                   timeMinute: dayInf.timeMinute,
+                                   howSugur: dayInf.sugar,
+                                   howInsulin: dayInf.insulin
+                        )
+                    }
+                    
+
+                }
+               // .onDelete(perform: deleteItems)
+            }
+            .offset(y:-20)
+            .padding()
+            
+            }
+        }
+        
+    }
+
+    
+    
 }
 
 var formatter: DateFormatter = {

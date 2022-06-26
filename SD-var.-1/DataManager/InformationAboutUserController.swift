@@ -75,19 +75,6 @@ struct infAboutUser : DataManagerProtocolForInformationAboutUser{
     
      func aboutRegistration() -> Bool{
          
-//         var items : [InformationAboutUser] = []
-//
-//         let fetchRequest: NSFetchRequest<InformationAboutUser> = InformationAboutUser.fetchRequest()
-//
-//
-//         do {
-//
-//             items = try viewContext.fetch(fetchRequest)
-//
-//         } catch let error {
-//             print(error)
-//         }
-         
          let items = getItems()
          
          var registration = false

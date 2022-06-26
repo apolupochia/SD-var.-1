@@ -23,62 +23,65 @@ struct AddNewDimensionsView: View {
     
     
     var body: some View {
-        VStack{
-            Spacer()
-            Text("Ваш Сахар")
-                .font(.largeTitle)
-                .foregroundColor(.red)
+        ZStack{
+            backgroundView()
+            VStack{
+                Spacer()
+                Text("Ваш Сахар")
+                    .font(.largeTitle)
+                    .foregroundColor(.red)
 
-            TextField("Сахар", text: $newSug )
-                .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(lineWidth: 4)
-                        .foregroundColor(.blue)
-                )
-            
-                .padding()
-                .textContentType(.oneTimeCode)
-                .keyboardType(.numberPad)
-            Spacer()
+                TextField("Сахар", text: $newSug )
+                    .multilineTextAlignment(.center)
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 4)
+                            .foregroundColor(.blue)
+                    )
+                
+                    .padding()
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.numberPad)
+                Spacer()
 
-            Text("Введенное количество инсулина")
-                .font(.largeTitle)
-                .foregroundColor(.red)
-            
-            TextField("Сахар", text: $insulin )
-                .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(lineWidth: 4)
-                        .foregroundColor(.blue)
-                )
-            
-                .padding()
-                .textContentType(.oneTimeCode)
-                .keyboardType(.numberPad)
-            Spacer()
-            Button {
-                showAnyView = true
-                showModal = false
-                addItem()
-            } label: {
-                Text("Enter")
-                    .font(.title)
-                    .foregroundColor(.white)
+                Text("Введенное количество инсулина")
+                    .font(.largeTitle)
+                    .foregroundColor(.red)
+                
+                TextField("Сахар", text: $insulin )
+                    .multilineTextAlignment(.center)
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 4)
+                            .foregroundColor(.blue)
+                    )
+                
+                    .padding()
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.numberPad)
+                Spacer()
+                Button {
+                    showAnyView = true
+                    showModal = false
+                    addItem()
+                } label: {
+                    Text("Enter")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+                .frame(width: 100 , height: 50)
+                .background(.blue)
+                .cornerRadius(20)
+                
             }
-            .frame(width: 100 , height: 50)
-            .background(.blue)
-            .cornerRadius(20)
-            
-        }
-        .onTapGesture {
-            self.endEditing()
-        }
+            .onTapGesture {
+                self.endEditing()
+            }
+            }
        
-        .background(.yellow)
+       // .background(.yellow)
      //   .ignoresSafeArea()
     }
     

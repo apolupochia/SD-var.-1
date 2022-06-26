@@ -12,84 +12,19 @@ struct View___HistoryInformationCard: View {
     @State private var  showModal = false
     @Binding var showAnyView : Bool
     
-    @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \CarbohydratesForFood.date, ascending: false)],
-        animation: .default)
     
-    private var itemsOld : FetchedResults<CarbohydratesForFood>
+    @State private var items = EatAndTime.shared.fetchAllElements()
   
     var body: some View {
         
         ZStack {
-            VStack {
-                Button {
-                    showModal = true
-                    showAnyView.toggle()
-                } label: {
-                    Label("add", systemImage: "plus")
-                }
-                .frame(maxWidth: .infinity, alignment: .topLeading)
-                .padding(.horizontal, 5)
-                
-                List{
-                    let items = EatAndTime.shared.addAllElement()
-                    Text("История приема пищи!")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    ForEach(Array(items.days), id: \.self) { item in
-                        VStack{
-                        Text(item.day)
-                                .listRowInsets(EdgeInsets())
-                            .font(.title)
-                            .foregroundColor(.green)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        Text("\(item.date, formatter : formatter)")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .listRowInsets(EdgeInsets())
-                    
-                        }
-                            ForEach(0..<item.amountOfCarbohydrates.count){ i in
-                                HistoryInformationCard(
-                                    timeEatOfDay: item.thenEating[i],
-                                    timeHour: (item.timeHour[i]),
-                                    tomeMinute: (item.timeMinute[i]),
-                                    Carbohydrates: (item.amountOfCarbohydrates[i])
-                                )
-                               
-                        }
-
-                            .onDelete(perform: deleteItems)
-                           
-                       
-                    }
-                }
-                .foregroundColor(.black)
-                .onAppear {
-                    // Set the default to clear
-                    UITableView.appearance().backgroundColor = .clear
-                }
-               
-                .listStyle(InsetListStyle())
-//                .listStyle(DefaultListStyle())
-//                .listStyle(GroupedListStyle())
- //               .listStyle(SidebarListStyle())
-//                .listStyle(BorderedListStyle())
-//                .listStyle(CarouselListStyle())
-//                .listStyle(EllipticalListStyle())
-//                .listStyle(InsetGroupedListStyle())
-                
-                
-               
-                
-                .background(.white)
+            if !showModal{
+                mainContent
+                    .background(.white)
             }
-            
-            .background(.white)
             if showModal{
-                AddNewEatingView(showAnyView: $showAnyView, showModal: $showModal)
+                AddNewEatingView(itemsToAll: $items ,showAnyView: $showAnyView, showModal: $showModal)
                     .background(Color.white)
                     .transition(
                         .move(edge: .trailing)
@@ -97,25 +32,84 @@ struct View___HistoryInformationCard: View {
             }
             
         }
-
-        
-        
         .background(.white)
         
     }
     
+    
+    private var mainContent : some View{
+        VStack {
+            Button {
+                showModal = true
+                showAnyView.toggle()
+            } label: {
+                Label("add", systemImage: "plus")
+            }
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .padding(.horizontal, 5)
+            
+            List{
+                
+                Text("История приема пищи!")
+                    .font(.largeTitle)
+                    .foregroundColor(.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                ForEach(items.days) { item in
+                    VStack{
+                    
+                    Text(item.day)
+                            .listRowInsets(EdgeInsets())
+                        .font(.title)
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Text("\(item.date, formatter : formatter)")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .listRowInsets(EdgeInsets())
+                
+                    }
+                    ForEach(item.informationAboutDay){ elem in
+                            HistoryInformationCard(
+                                timeEatOfDay: elem.thenEating,
+                                timeHour: (elem.timeHour),
+                                tomeMinute: (elem.timeMinute),
+                                Carbohydrates: (elem.amountOfCarbohydrates)
+                            )
+
+                    }
+
+                       .onDelete(perform: deleteItems)
+                       
+                   
+                }
+            }
+            .foregroundColor(.black)
+            .onAppear {
+                // Set the default to clear
+                UITableView.appearance().backgroundColor = .clear
+            }
+           
+            .listStyle(InsetListStyle())
+//                .listStyle(DefaultListStyle())
+//                .listStyle(GroupedListStyle())
+//               .listStyle(SidebarListStyle())
+//                .listStyle(BorderedListStyle())
+//                .listStyle(CarouselListStyle())
+//                .listStyle(EllipticalListStyle())
+//                .listStyle(InsetGroupedListStyle())
+            
+            
+           
+            
+            .background(.white)
+        }
+    }
+    
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { itemsOld[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        
+            EatAndTime.shared.deleteItems(offsets: offsets)
         }
+        items = EatAndTime.shared.fetchAllElements()
     }
 }
 

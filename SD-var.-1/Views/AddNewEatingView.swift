@@ -18,6 +18,7 @@ enum Topping: String, CaseIterable, Identifiable {
 
 
 struct AddNewEatingView: View {
+    @Binding var itemsToAll: ArbohydratesAndTimeData
     @Binding var showAnyView : Bool
     
    // @Environment (.\managedObjectContext) private var viewContext
@@ -41,76 +42,80 @@ struct AddNewEatingView: View {
     @State private var carbohydrates = ""
     @Binding var showModal : Bool
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Введите принятое количество углеводов")
-                .font(.title)
-                .foregroundColor(.black)
-            
-            TextField("~50", text: $carbohydrates )
-            
-            
-                .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(lineWidth: 4)
-                        .foregroundColor(.blue)
-                )
-                .padding()
-                .textContentType(.oneTimeCode)
-                .keyboardType(.numberPad)
-                .foregroundColor(.black)
-                .background(.white)
-            
-            
-        Spacer()
-            Picker("Topping", selection: $selectedTopping) {
-                ForEach(Topping.allCases) { topping in
-                    Text(topping.rawValue.capitalized)
-                        .foregroundColor(.black)
-                }
-            }
-            .frame(width: 300, height: 100)
-            .foregroundColor(.black)
-            
-            
-            // .pickerStyle(.inline)
-            // .pickerStyle(.automatic)
-            //  .pickerStyle(.menu)
-             .pickerStyle(.wheel)
-            // .pickerStyle(.segmented)
-            // .pickerStyle(.)
-            
-            Spacer()
-            Button {
-                if carbohydrates != ""{
-                    EatAndTime.shared.saveTask(amountOfCarbohydrates: carbohydrates, thenEating: selectedTopping.rawValue)
-//                  //  elem.saveTask(viewContext: viewContext,
-//                                  amountOfCarbohydrates: carbohydrates,
-//                                  thenEating: selectedTopping.rawValue)
-
-                }
-                carbohydrates = ""
-                showAnyView.toggle()
-                showModal = false
-                
-                
-                
-            } label: {
-                Text("Enter")
-                    .foregroundColor(.white)
+        ZStack{
+            backgroundView()
+            VStack {
+                Spacer()
+                Text("Введите принятое количество углеводов")
                     .font(.title)
-            }
-            .frame(width: 100, height: 50)
-            .background(.blue)
-            .cornerRadius(20)
+                    .foregroundColor(.black)
+                
+                TextField("~50", text: $carbohydrates )
+                
+                
+                    .multilineTextAlignment(.center)
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 4)
+                            .foregroundColor(.blue)
+                    )
+                    .padding()
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.numberPad)
+                    .foregroundColor(.black)
+                  //  .background(.white)
+                
+                
+            Spacer()
+                Picker("Topping", selection: $selectedTopping) {
+                    ForEach(Topping.allCases) { topping in
+                        Text(topping.rawValue.capitalized)
+                            .foregroundColor(.black)
+                    }
+                }
+                .frame(width: 300, height: 100)
+                .foregroundColor(.black)
+                
+                
+                // .pickerStyle(.inline)
+                // .pickerStyle(.automatic)
+                //  .pickerStyle(.menu)
+                 .pickerStyle(.wheel)
+                // .pickerStyle(.segmented)
+                // .pickerStyle(.)
+                
+                Spacer()
+                Button {
+                    if carbohydrates != ""{
+                        EatAndTime.shared.saveTask(amountOfCarbohydrates: carbohydrates, thenEating: selectedTopping.rawValue)
+                        itemsToAll = EatAndTime.shared.fetchAllElements()
+    //                  //  elem.saveTask(viewContext: viewContext,
+    //                                  amountOfCarbohydrates: carbohydrates,
+    //                                  thenEating: selectedTopping.rawValue)
 
+                    }
+                    carbohydrates = ""
+                    showAnyView.toggle()
+                    showModal = false
+                    
+                    
+                    
+                } label: {
+                    Text("Enter")
+                        .foregroundColor(.white)
+                        .font(.title)
+                }
+                .frame(width: 100, height: 50)
+                .background(.blue)
+                .cornerRadius(20)
+
+            }
+            .onTapGesture {
+                self.endEditing()
+            }
+           // .background(.white)
         }
-        .onTapGesture {
-            self.endEditing()
-        }
-        .background(.white)
     }
     private func endEditing() {
         UIApplication.shared.endEditing()
@@ -119,7 +124,10 @@ struct AddNewEatingView: View {
 
 struct AddNewEatingView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewEatingView(showAnyView: .constant(false), showModal: .constant(true))
+        AddNewEatingView(itemsToAll: .constant(ArbohydratesAndTimeData(days: [])),
+                         showAnyView: .constant(false),
+                         showModal: .constant(true)
+        )
     }
 }
 
@@ -128,3 +136,4 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
