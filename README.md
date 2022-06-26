@@ -1,4 +1,4 @@
-the program for diabetes mellitus\
+The program for diabetes mellitus\
 SwiftUI\
 UIKit\
 CoreData\
