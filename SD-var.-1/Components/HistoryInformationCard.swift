@@ -26,12 +26,6 @@ struct HistoryInformationCard: View {
                 }
             }
             .frame(height: 64)
-            
-            
-           
-            
-            
-            
         }
         
         .background(.yellow)

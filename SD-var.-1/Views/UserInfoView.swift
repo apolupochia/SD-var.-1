@@ -5,6 +5,12 @@
 //  Created by Алёша Виноградов on 18.06.2022.
 //
 
+
+
+
+
+//  пока не используется
+
 import SwiftUI
 
 struct UserInfoView: View {

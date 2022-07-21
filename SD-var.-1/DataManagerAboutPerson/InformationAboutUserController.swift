@@ -48,7 +48,6 @@ struct infAboutUser : DataManagerProtocolForInformationAboutUser{
         
         let fetchRequest: NSFetchRequest<InformationAboutUser> = InformationAboutUser.fetchRequest()
     
-        
         do {
             
             items = try viewContext.fetch(fetchRequest)
@@ -56,10 +55,6 @@ struct infAboutUser : DataManagerProtocolForInformationAboutUser{
         } catch let error {
             print(error)
         }
-        
-        
-        
-        
         var information = secretInformation(name: "", dateOfBirth: "", city: "", infoUser: "", registration: false)
         
         

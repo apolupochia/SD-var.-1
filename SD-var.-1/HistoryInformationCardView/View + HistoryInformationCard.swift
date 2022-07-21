@@ -12,6 +12,8 @@ struct View___HistoryInformationCard: View {
     @State private var  showModal = false
     @Binding var showAnyView : Bool
     
+    @StateObject private var viewModel = HistoryInformationView()
+    
     
     
     @State private var items = EatAndTime.shared.fetchAllElements()
@@ -24,7 +26,7 @@ struct View___HistoryInformationCard: View {
                     .background(.white)
             }
             if showModal{
-                AddNewEatingView(itemsToAll: $items ,showAnyView: $showAnyView, showModal: $showModal)
+                AddNewEatingView(showAnyView: $showAnyView, showModal: $showModal)
                     .background(Color.white)
                     .transition(
                         .move(edge: .trailing)
@@ -54,7 +56,7 @@ struct View___HistoryInformationCard: View {
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .frame(maxWidth: .infinity, alignment: .center)
-                ForEach(items.days) { item in
+                ForEach(viewModel.rows.days) { item in
                     VStack{
                     
                     Text(item.day)
@@ -81,12 +83,15 @@ struct View___HistoryInformationCard: View {
                        
                    
                 }
+             
             }
+
             .foregroundColor(.black)
             .onAppear {
-                // Set the default to clear
+                viewModel.fetchHistoryInformation()
                 UITableView.appearance().backgroundColor = .clear
             }
+
            
             .listStyle(InsetListStyle())
 //                .listStyle(DefaultListStyle())
@@ -102,6 +107,7 @@ struct View___HistoryInformationCard: View {
             
             .background(.white)
         }
+   
     }
     
     
@@ -109,7 +115,7 @@ struct View___HistoryInformationCard: View {
         withAnimation {
             EatAndTime.shared.deleteItems(offsets: offsets)
         }
-        items = EatAndTime.shared.fetchAllElements()
+        viewModel.fetchHistoryInformation()
     }
 }
 

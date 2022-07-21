@@ -18,18 +18,8 @@ enum Topping: String, CaseIterable, Identifiable {
 
 
 struct AddNewEatingView: View {
-    @Binding var itemsToAll: ArbohydratesAndTimeData
     @Binding var showAnyView : Bool
     
-   // @Environment (.\managedObjectContext) private var viewContext
-    
-//    @Environment(\.managedObjectContext) private var viewContext
-//
-//    @FetchRequest( //entity: Eating.entity(),
-//        sortDescriptors: [],
-//        animation: .default
-//    )
-//    private var items : FetchedResults<Eating>
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -89,7 +79,7 @@ struct AddNewEatingView: View {
                 Button {
                     if carbohydrates != ""{
                         EatAndTime.shared.saveTask(amountOfCarbohydrates: carbohydrates, thenEating: selectedTopping.rawValue)
-                        itemsToAll = EatAndTime.shared.fetchAllElements()
+                       // itemsToAll = EatAndTime.shared.fetchAllElements()
     //                  //  elem.saveTask(viewContext: viewContext,
     //                                  amountOfCarbohydrates: carbohydrates,
     //                                  thenEating: selectedTopping.rawValue)
@@ -124,7 +114,7 @@ struct AddNewEatingView: View {
 
 struct AddNewEatingView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewEatingView(itemsToAll: .constant(ArbohydratesAndTimeData(days: [])),
+        AddNewEatingView(//itemsToAll: .constant(ArbohydratesAndTimeData(days: [])),
                          showAnyView: .constant(false),
                          showModal: .constant(true)
         )

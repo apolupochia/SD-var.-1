@@ -12,16 +12,10 @@ struct View_SugInfCard: View {
     @Binding var showAnyView : Bool
     @State var newSug : String = ""
     @State var showModal = false
-    var tyt = true
-    var dayCount = ""
     
-    @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var viewModel = CourseListViewModel()
+    
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \DateOfMedicine.date, ascending: false)],
-        animation: .default)
-    
-     private var items: FetchedResults<DateOfMedicine>
 
     
     var body: some View {
@@ -56,11 +50,8 @@ struct View_SugInfCard: View {
 
             if !showModal{
             ScrollView(.vertical, showsIndicators: false) {
-               // var Sug = SugAndTime(items: items)
-                let days = SugAndTime.shared.addAllElement()
         
-                ForEach(Array(days.days), id: \.self) { day in
-                 //   Text("123")
+                ForEach(Array(viewModel.rows.days), id: \.self) { day in
                     
                     Text("\(day.day)")
                             .font(.largeTitle)
@@ -77,19 +68,26 @@ struct View_SugInfCard: View {
                     
 
                 }
-               // .onDelete(perform: deleteItems)
+            }
+            .onAppear{
+                viewModel.fetchRows()
             }
             .offset(y:-20)
             .padding()
             
             }
         }
-        
     }
-
-    
-    
 }
+
+
+
+struct View_SugInfCard_Previews: PreviewProvider {
+    static var previews: some View {
+        View_SugInfCard(showAnyView: .constant(true))
+    }
+}
+
 
 var formatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -97,9 +95,3 @@ var formatter: DateFormatter = {
    // formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss z"
     return formatter
 }()
-
-struct View_SugInfCard_Previews: PreviewProvider {
-    static var previews: some View {
-        View_SugInfCard(showAnyView: .constant(true))
-    }
-}

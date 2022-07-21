@@ -29,9 +29,9 @@ struct MenuRow: View {
         )
         .background(Color("Background 2"))
         .onTapGesture {
-            try? item.icon.setInput("active", value: true)
+             item.icon.setInput("active", value: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                try? item.icon.setInput("active", value: false)
+                 item.icon.setInput("active", value: false)
             }
             withAnimation {
                 selectedMenu = item.menu

@@ -9,7 +9,6 @@ import SwiftUI
 import RiveRuntime
 
 struct ContentView: View {
-   // @AppStorage("selectedTab") var selectedTab : Tab = .chat
     @State var selectedTab : Tab = .chat
     @State var isOpen = false
     @State var show = false
@@ -31,15 +30,16 @@ struct ContentView: View {
                 case .chat:
                     HomeView()
                 case .search:
-                    ViewControllerRepresentation()
-                        .ignoresSafeArea()
+                    View___InformationFood()
+                    
                 case .timer:
                     View___HistoryInformationCard(showAnyView: $showAnyView)
                         .background(.white)
                 case .bell:
                     View_SugInfCard(showAnyView: $showAnyView)
                 case .user:
-                    View___InformationFood()
+                    ViewControllerRepresentation()
+                        .ignoresSafeArea()
                     
                 }
             }

@@ -53,17 +53,3 @@ struct ViewsCoordinator_Previews: PreviewProvider {
         ViewsCoordinator()
     }
 }
-
-
-
-//    .onAppear {
-//            AppDelegate.orientationLock = UIInterfaceOrientationMask.landscapeLeft
-//            UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
-//            UINavigationController.attemptRotationToDeviceOrientation()
-//        }
-//        .onDisappear {
-//            DispatchQueue.main.async {
-//                AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
-//                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-//                UINavigationController.attemptRotationToDeviceOrientation()
-//            }

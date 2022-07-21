@@ -3,7 +3,6 @@
 //  SD-var.-1
 //
 //  Created by Алёша Виноградов on 17.06.2022.
-//
 
 import SwiftUI
 
@@ -17,7 +16,8 @@ struct View___InformationFood: View {
                 .foregroundColor(.blue)
                 
                 ForEach(foodInf) { item in
-                    FoodInformationCard(foodsInf: item)
+                    FoodInformationCard()
+                  //  FoodInformationCard(foodsInf: item)
                 
             }
            

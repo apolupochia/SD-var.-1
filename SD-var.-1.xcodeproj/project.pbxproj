@@ -18,6 +18,7 @@
 		D73468662860B9EB00BDE245 /* DateOfMedicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73468642860B9EB00BDE245 /* DateOfMedicine+CoreDataProperties.swift */; };
 		D747146E28634FC200B8F88F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747146C28634FC100B8F88F /* ViewController.swift */; };
 		D747146F28634FC200B8F88F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D747146D28634FC200B8F88F /* Main.storyboard */; };
+		D74F67442886C82500E01945 /* FoodUrlImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74F67432886C82500E01945 /* FoodUrlImages.swift */; };
 		D7521DD728621E880063F953 /* CarbohydratesForFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7521DD628621E880063F953 /* CarbohydratesForFoodController.swift */; };
 		D76677302863A6E800ACAE81 /* DataManagerForPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766772F2863A6E800ACAE81 /* DataManagerForPerson.swift */; };
 		D769477D285C9DB100F0F909 /* FoodInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769477C285C9DB100F0F909 /* FoodInformation.swift */; };
@@ -55,8 +56,9 @@
 		D7A76D8C2859E18000381032 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A76D892859E18000381032 /* Inter-Regular.ttf */; };
 		D7A76D8D2859E18000381032 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A76D8A2859E18000381032 /* Poppins-Bold.ttf */; };
 		D7A76D8E2859E18000381032 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A76D8B2859E18000381032 /* Inter-SemiBold.ttf */; };
+		D7C088B8286CE6F900F97859 /* SugInfCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C088B7286CE6F900F97859 /* SugInfCardListViewModel.swift */; };
+		D7C088BC286F1B5C00F97859 /* HistoryInformationCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C088BB286F1B5C00F97859 /* HistoryInformationCardViewModel.swift */; };
 		D7D4CC7C2861F89D00179CD1 /* AddNewEatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4CC7B2861F89D00179CD1 /* AddNewEatingView.swift */; };
-		D7D6C071286355960034ECC8 /* PersonInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6C070286355960034ECC8 /* PersonInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,7 @@
 		D73468642860B9EB00BDE245 /* DateOfMedicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateOfMedicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D747146C28634FC100B8F88F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D747146D28634FC200B8F88F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D74F67432886C82500E01945 /* FoodUrlImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodUrlImages.swift; sourceTree = "<group>"; };
 		D7521DD628621E880063F953 /* CarbohydratesForFoodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbohydratesForFoodController.swift; sourceTree = "<group>"; };
 		D766772F2863A6E800ACAE81 /* DataManagerForPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerForPerson.swift; sourceTree = "<group>"; };
 		D769477C285C9DB100F0F909 /* FoodInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInformation.swift; sourceTree = "<group>"; };
@@ -108,9 +111,10 @@
 		D7A76D892859E18000381032 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		D7A76D8A2859E18000381032 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D7A76D8B2859E18000381032 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
-		D7A76D8F2859E1C700381032 /* SD-var--1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SD-var--1-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D7A76D8F2859E1C700381032 /* SD-var--1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SD-var--1-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D7C088B7286CE6F900F97859 /* SugInfCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugInfCardListViewModel.swift; sourceTree = "<group>"; };
+		D7C088BB286F1B5C00F97859 /* HistoryInformationCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryInformationCardViewModel.swift; sourceTree = "<group>"; };
 		D7D4CC7B2861F89D00179CD1 /* AddNewEatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEatingView.swift; sourceTree = "<group>"; };
-		D7D6C070286355960034ECC8 /* PersonInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,14 +132,11 @@
 		D7161265285A4D7600468CB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7A76D862859311F00381032 /* OnBoardView.swift */,
+				D716125F2859EB4A00468CB4 /* SigningView.swift */,
 				D7D4CC7B2861F89D00179CD1 /* AddNewEatingView.swift */,
 				D78383E02860F738003B0ED0 /* AddNewDimensionsView.swift */,
 				D76B4365285A7700004EB3B7 /* HomeView.swift */,
-				D716125F2859EB4A00468CB4 /* SigningView.swift */,
-				D7A76D862859311F00381032 /* OnBoardView.swift */,
-				D7694780285CA7D000F0F909 /* View + InformationFood.swift */,
-				D778F74A285E615F00B6B9DC /* View + HistoryInformationCard.swift */,
-				D78A55AB285E6A8700AC3966 /* View+SugInfCard.swift */,
 				D78A55AD285E6C3600AC3966 /* UserInfoView.swift */,
 			);
 			path = Views;
@@ -151,15 +152,13 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
-		D71A797E286493DF004B73F7 /* DataManager */ = {
+		D71A797E286493DF004B73F7 /* DataManagerAboutPerson */ = {
 			isa = PBXGroup;
 			children = (
 				D70F410628637B8100545C1D /* InformationAboutUserController.swift */,
-				D78383E228611EB7003B0ED0 /* DateOfMedicineController.swift */,
-				D7521DD628621E880063F953 /* CarbohydratesForFoodController.swift */,
 				D766772F2863A6E800ACAE81 /* DataManagerForPerson.swift */,
 			);
-			path = DataManager;
+			path = DataManagerAboutPerson;
 			sourceTree = "<group>";
 		};
 		D71A797F28649429004B73F7 /* Coordinators */ = {
@@ -184,7 +183,6 @@
 			children = (
 				D747146C28634FC100B8F88F /* ViewController.swift */,
 				D747146D28634FC200B8F88F /* Main.storyboard */,
-				D7D6C070286355960034ECC8 /* PersonInformation.swift */,
 			);
 			path = "Storyboard+ViewController";
 			sourceTree = "<group>";
@@ -199,13 +197,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D780A23728898CE200F597DB /* FoodCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D769477E285C9E8E00F0F909 /* FoodInformationCard.swift */,
+				D7694780285CA7D000F0F909 /* View + InformationFood.swift */,
+				D74F67432886C82500E01945 /* FoodUrlImages.swift */,
+			);
+			path = FoodCardView;
+			sourceTree = "<group>";
+		};
 		D79D093D285B348C00CFC813 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				D76B4360285A7016004EB3B7 /* VCard.swift */,
 				D76B4369285A9203004EB3B7 /* MenuRow.swift */,
 				D76B4363285A74D4004EB3B7 /* HCard.swift */,
-				D769477E285C9E8E00F0F909 /* FoodInformationCard.swift */,
 				D778F748285E592800B6B9DC /* HistoryInformationCard.swift */,
 				D78A55A9285E648700AC3966 /* SugInfCard.swift */,
 			);
@@ -237,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A76D602859242F00381032 /* SD-var.-1 */,
+				D7A76D8F2859E1C700381032 /* SD-var--1-Info.plist */,
 				D7A76D5F2859242F00381032 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -252,16 +260,18 @@
 		D7A76D602859242F00381032 /* SD-var.-1 */ = {
 			isa = PBXGroup;
 			children = (
+				D780A23728898CE200F597DB /* FoodCardView */,
+				D7C088BA286F1B0C00F97859 /* HistoryInformationCardView */,
+				D7C088B9286D7FA900F97859 /* SugInfCardView */,
 				D71A797F28649429004B73F7 /* Coordinators */,
-				D71A797E286493DF004B73F7 /* DataManager */,
+				D71A797E286493DF004B73F7 /* DataManagerAboutPerson */,
 				D747146B28634F9A00B8F88F /* Storyboard+ViewController */,
 				D79D093E285B34C700CFC813 /* Navigations */,
 				D79D093D285B348C00CFC813 /* Components */,
-				D76B435A285A6FBE004EB3B7 /* Model */,
-				D7161266285A4DA100468CB4 /* Styles */,
 				D7161265285A4D7600468CB4 /* Views */,
-				D7A76D8F2859E1C700381032 /* SD-var--1-Info.plist */,
 				D73468672860BA9B00BDE245 /* DateOfMedicine+CoreData */,
+				D7161266285A4DA100468CB4 /* Styles */,
+				D76B435A285A6FBE004EB3B7 /* Model */,
 				D7A76D882859E18000381032 /* Fonts */,
 				D79D093F285B34E600CFC813 /* System */,
 				D7A76D7428592EB400381032 /* RiveAssets */,
@@ -300,6 +310,26 @@
 				D7A76D8B2859E18000381032 /* Inter-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D7C088B9286D7FA900F97859 /* SugInfCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D78383E228611EB7003B0ED0 /* DateOfMedicineController.swift */,
+				D78A55AB285E6A8700AC3966 /* View+SugInfCard.swift */,
+				D7C088B7286CE6F900F97859 /* SugInfCardListViewModel.swift */,
+			);
+			path = SugInfCardView;
+			sourceTree = "<group>";
+		};
+		D7C088BA286F1B0C00F97859 /* HistoryInformationCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D7521DD628621E880063F953 /* CarbohydratesForFoodController.swift */,
+				D778F74A285E615F00B6B9DC /* View + HistoryInformationCard.swift */,
+				D7C088BB286F1B5C00F97859 /* HistoryInformationCardViewModel.swift */,
+			);
+			path = HistoryInformationCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,14 +423,15 @@
 				D76B435E285A6FBF004EB3B7 /* Course.swift in Sources */,
 				D78A55AA285E648800AC3966 /* SugInfCard.swift in Sources */,
 				D70F410728637B8100545C1D /* InformationAboutUserController.swift in Sources */,
+				D74F67442886C82500E01945 /* FoodUrlImages.swift in Sources */,
 				D769477D285C9DB100F0F909 /* FoodInformation.swift in Sources */,
 				D71612602859EB4A00468CB4 /* SigningView.swift in Sources */,
 				D76B4361285A7016004EB3B7 /* VCard.swift in Sources */,
-				D7D6C071286355960034ECC8 /* PersonInformation.swift in Sources */,
 				D7161264285A053A00468CB4 /* Extensions.swift in Sources */,
 				D778F74B285E615F00B6B9DC /* View + HistoryInformationCard.swift in Sources */,
 				D7A76D6E2859243500381032 /* SD_var__1.xcdatamodeld in Sources */,
 				D7A76D872859311F00381032 /* OnBoardView.swift in Sources */,
+				D7C088BC286F1B5C00F97859 /* HistoryInformationCardViewModel.swift in Sources */,
 				D76B435D285A6FBF004EB3B7 /* CourseSection.swift in Sources */,
 				D76B4368285A7C73004EB3B7 /* SideMenu.swift in Sources */,
 				D78A55AC285E6A8700AC3966 /* View+SugInfCard.swift in Sources */,
@@ -410,6 +441,7 @@
 				D76B436A285A9203004EB3B7 /* MenuRow.swift in Sources */,
 				D73468662860B9EB00BDE245 /* DateOfMedicine+CoreDataProperties.swift in Sources */,
 				D7D4CC7C2861F89D00179CD1 /* AddNewEatingView.swift in Sources */,
+				D7C088B8286CE6F900F97859 /* SugInfCardListViewModel.swift in Sources */,
 				D7161268285A4E5900468CB4 /* ContentView.swift in Sources */,
 				D7521DD728621E880063F953 /* CarbohydratesForFoodController.swift in Sources */,
 				D78A55AE285E6C3600AC3966 /* UserInfoView.swift in Sources */,

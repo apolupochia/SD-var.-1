@@ -36,11 +36,11 @@ struct SigningView: View {
         if name != "" {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                try? check.triggerInput("Check")
+                 check.triggerInput("Check")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 isLoading = false
-                try? confetti.triggerInput("Trigger explosion")
+                 confetti.triggerInput("Trigger explosion")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation {
@@ -57,7 +57,7 @@ struct SigningView: View {
             
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                try? check.triggerInput("Error")
+                 check.triggerInput("Error")
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 isLoading = false

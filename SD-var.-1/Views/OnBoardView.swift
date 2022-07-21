@@ -19,7 +19,7 @@ struct OnBoardView: View {
         sortDescriptors: [],
         animation: .default
     )
-    
+
     private var items: FetchedResults<InformationAboutUser>
     
     var body: some View {
@@ -97,7 +97,6 @@ struct OnBoardView: View {
                         
                 )
                 .onTapGesture {
-                   // let registration = infAboutUser(items: items)
                     let registrationBool = infAboutUser.shared.aboutRegistration()
                     
                    // try?
