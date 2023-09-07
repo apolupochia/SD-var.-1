@@ -1,4 +1,4 @@
-# JokesSocial-app
+# SD-var.-1
 ## Технологии и инструменты
 
 - [Swift]()
