@@ -1,6 +1,10 @@
-The program for diabetes mellitus\
-SwiftUI\
-UIKit\
-CoreData\
-Animations
+# JokesSocial-app
+## Технологии и инструменты
 
+- [Swift]()
+- [SwiftUI]()
+- [UIKit]()
+- [﻿CoreData]()
+- [﻿Animations]()
+
+### The program for diabetes mellitus
